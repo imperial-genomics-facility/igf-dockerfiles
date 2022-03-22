@@ -25,7 +25,7 @@ RUN apt-get -y update &&   \
     pip install \
       setuptools && \
     pip install \
-      multiqc==1.10 && \
+      multiqc==1.12 && \
     rm -rf /var/lib/apt/lists/*
 USER nobody
 ENV LC_ALL=C.UTF-8
