@@ -10,7 +10,7 @@ RUN apt-get -y update &&   \
       locales \
       cmake \
       g++ \
-      openjdk-8-jre-headless \
+      openjdk-8-jre \
       wget \
       bzip2 \
       libbz2-dev \
