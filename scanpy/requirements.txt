@@ -1,0 +1,14 @@
+scanpy==1.9.3
+scrublet==0.2.3
+leidenalg==0.9.1
+plotly==5.14.1
+iplotter==0.4.3
+scvelo==0.2.5
+scipy==1.10.1
+anndata==0.9.1
+nbconvert==7.4.0
+cellbrowser==1.2.2
+phate==1.0.10
+jupyter
+jupyterlab
+nbconvert
