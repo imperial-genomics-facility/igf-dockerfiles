@@ -35,7 +35,7 @@ RUN apt-get -y update &&   \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 RUN pip install --upgrade pip
-ADD requirements.txt /data/requirements.txt
+ADD requirements_v1.9.3.txt /data/requirements.txt
 RUN pip install --no-cache-dir -r /data/requirements.txt
 USER notebook
 WORKDIR /home/notebook

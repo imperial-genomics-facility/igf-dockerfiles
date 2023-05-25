@@ -1,5 +1,6 @@
 scanpy==1.9.3
 scrublet==0.2.3
+scirpy==0.12.2
 leidenalg==0.9.1
 plotly==5.14.1
 iplotter==0.4.3
