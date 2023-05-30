@@ -1,0 +1,4 @@
+install interop==1.2.4
+iplotter==0.4.3
+pandas==2.0.2
+jupyterlab==3.6.3
