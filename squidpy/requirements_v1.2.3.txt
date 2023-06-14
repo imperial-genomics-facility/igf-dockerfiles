@@ -1,0 +1,12 @@
+scanpy==1.9.3
+squidpy[interactive]==1.2.3
+leidenalg==0.9.1
+plotly==5.14.1
+iplotter==0.4.3
+scipy==1.10.1
+anndata==0.9.1
+nbconvert==7.4.0
+cellbrowser==1.2.2
+jupyter
+jupyterlab
+nbconvert
