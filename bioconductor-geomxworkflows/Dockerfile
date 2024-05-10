@@ -3,14 +3,15 @@ RUN apt-get update && \
     R -e 'BiocManager::install("GeoMxWorkflows")' && \
     R -e 'BiocManager::install("GeomxTools")' && \
     R -e 'BiocManager::install("NanoStringNCTools")' && \
-    R -e 'BiocManager::install("Seurat")' && \
-    pip install --no-cache-dir jupyterlab setuptools rpy2 scanpy openpyxl altair && \
-    R -e 'install.packages("IRkernel", repos="https://cloud.r-project.org/"); IRkernel::installspec();' && \
+    R -e 'BiocManager::install("Seurat")'
+RUN python3 -m pip install --upgrade pip setuptools wheel && \
+    pip3 install --no-cache-dir jupyterlab setuptools rpy2 scanpy openpyxl altair
+RUN R -e 'install.packages("IRkernel", repos="https://cloud.r-project.org/"); IRkernel::installspec();' && \
     R -e 'install.packages("remotes", repos="https://cloud.r-project.org/");' && \
     R -e 'remotes::install_github("mojaveazure/seurat-disk")' && \
-    R -e 'devtools::install_github("satijalab/seurat-data")' && \
-    apt-get clean && \
-	rm -rf /var/lib/apt/lists/* && \
+    R -e 'devtools::install_github("satijalab/seurat-data")'
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 RUN R -e 'IRkernel::installspec(user = FALSE)'
 USER rstudio
