@@ -4,7 +4,7 @@ RUN apt-get update && \
     R -e 'BiocManager::install("GeomxTools")' && \
     R -e 'BiocManager::install("NanoStringNCTools")' && \
     R -e 'BiocManager::install("Seurat")' && \
-    pip install --no-cache-dir jupyterlab rpy2 scanpy openpyxl altair && \
+    pip install --no-cache-dir jupyterlab setuptools rpy2 scanpy openpyxl altair && \
     R -e 'install.packages("IRkernel", repos="https://cloud.r-project.org/"); IRkernel::installspec();' && \
     R -e 'install.packages("remotes", repos="https://cloud.r-project.org/");' && \
     R -e 'remotes::install_github("mojaveazure/seurat-disk")' && \
