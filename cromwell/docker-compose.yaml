@@ -1,0 +1,37 @@
+version: '3.9'
+networks:
+  cromwell_network:
+    driver: bridge
+services:
+  cromwell_db:
+    image: mysql:5.7
+    env_file: .env
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2048m"
+    ports:
+      - "3305:3306"
+    volumes:
+      - ./mysqlappdb:/var/lib/mysql:rw
+    container_name: cromwell_db
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 5
+    networks:
+      - cromwell_network
+  cromwell_server:
+    image: cromwell:86
+    restart: unless-stopped
+    volumes:
+      - ./cromwell_conf:/conf
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2048m"
+    container_name: cromwell_server
+    command: ["java -DLOG_LEVEL=INFO -DGATK_STACKTRACE_ON_USER_EXCEPTION=true -Dconfig.file=/conf/db.conf -jar /app/cromwell-86.jar server"]
+    networks:
+      - cromwell_network
