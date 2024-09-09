@@ -2,6 +2,7 @@ bclconvert/bcl-convert-3.9.3-2.el7.x86_64.rpm:Zone.Identifier
 bclconvert/bcl-convert-3.9.3-2.el7.x86_64.rpm
 Guppy/ont-guppy-cpu-6.0.1-1.el7.x86_64.rpm
 *:Zone.Identifier
+*.rpm
 cromwell/mysqlappdb/auto.cnf
 cromwell/mysqlappdb/ca-key.pem
 cromwell/mysqlappdb/ca.pem
