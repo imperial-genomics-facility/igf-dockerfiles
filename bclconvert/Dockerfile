@@ -12,7 +12,10 @@ RUN cd /tmp && \
     rpm -i /tmp/bcl-convert.rpm && \
     rm -f /tmp/bcl-convert.rpm && \
     rm -rf /tmp/*
-USER nobody
-WORKDIR /tmp
+RUN groupadd -g 1001 bclconvert && \
+    useradd bclconvert -u 1001 -g 1001
+USER bclconvert
+VOLUME ["/data"]
+WORKDIR /data
 ENTRYPOINT ["sh","-c"]
 CMD ["/bin/bash"]
