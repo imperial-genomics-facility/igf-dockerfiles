@@ -1,0 +1,19 @@
+FROM bioconductor/bioconductor_docker:3.17
+RUN apt-get update
+RUN python3 -m pip install --upgrade pip setuptools wheel && \
+    pip3 install --no-cache-dir jupyterlab setuptools rpy2 pandas
+RUN R -e 'BiocManager::install("viridis")' && \
+    R -e 'BiocManager::install("irlba")' && \
+    R -e 'install.packages("IRkernel", repos="https://cloud.r-project.org/");' && \
+    R -e 'install.packages("remotes", repos="https://cloud.r-project.org/");' && \
+    R -e 'install.packages("ggplot2", repos="https://cloud.r-project.org/");' && \
+    R -e 'install.packages("RColorBrewer", repos="https://cloud.r-project.org/");' && \
+    R -e 'install.packages("data.table", repos="https://cloud.r-project.org/");'
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/*
+RUN R -e 'IRkernel::installspec(user = FALSE)'
+USER rstudio
+WORKDIR /home/rstudio/work
+ENV LD_LIBRARY_PATH /usr/local/lib/R/lib:/usr/local/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-11-openjdk-amd64/lib/server
+EXPOSE 8888
